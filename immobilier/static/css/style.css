@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    color: #00008b; /* Bleu foncé pour les titres */
+}
+
+header {
+    background-color: #add8e6; /* Bleu clair pour l'en-tête */
+    padding: 15px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #1e88e5; /* Bleu un peu plus soutenu pour les liens */
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+button[type="submit"] {
+    background-color: #42a5f5; /* Bleu plus vif pour les boutons */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button[type="submit"]:hover {
+    background-color: #1976d2; /* Bleu plus foncé au survol */
+}
+
+.content {
+    margin-top: 20px;
+}
+
+footer {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+    text-align: center;
+    color: #777;
+}
