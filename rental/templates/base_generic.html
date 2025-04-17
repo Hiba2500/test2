@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Application de Location{% endblock %}</title>
+
+    <style>
+        /* Style général */
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #f0f8ff; /* Bleu très clair en fond */
+            color: #00008b; /* Bleu foncé pour le texte */
+        }
+
+        /* En-tête */
+        header {
+            background-color: #4682b4; /* Bleu acier */
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        h1 {
+            color: white; /* Garder blanc uniquement pour <h1> */
+        }
+
+        h2 {
+            color: #FF4500; /* Rouge orangé pour meilleure visibilité */
+            font-weight: bold;
+        }
+
+        /* Classe spécifique pour les titres des annonces */
+        .titre-annonces {
+            color: #123987; /* Rouge orangé pour les annonces */
+            font-weight: bold;
+        }
+
+        /* Message d'alerte */
+        .alert-message {
+            color: #FF6347; /* Rouge léger */
+            font-weight: bold;
+        }
+
+        /* Navigation */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        nav ul li a, nav ul li button {
+            text-decoration: none;
+            background-color: #1e90ff; /* Bleu vif */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover, nav ul li button:hover {
+            background-color: #00008b; /* Bleu foncé au survol */
+        }
+
+        /* Contenu principal */
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Pied de page */
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            padding: 10px;
+            background-color: #4682b4; /* Même bleu acier que l'en-tête */
+            color: white;
+        }
+
+        .bienvenue {
+            color: #1e90ff; /* Bleu vif */
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Plateforme de Location immobilière</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="{% url 'home' %}">Accueil</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'create_annonce' %}">Créer une annonce</a></li>
+            <li><a href="#">Mon profil</a></li>
+            <li>
+                <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Déconnexion</button>
+                </form>
+            </li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Connexion</a></li>
+            <li><a href="{% url 'signup' %}">Inscription</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer>
+    <hr>
+    <p>&copy; 2023 Mon Application de Location. Tous droits réservés.</p>
+</footer>
+
+</body>
+</html>
+
